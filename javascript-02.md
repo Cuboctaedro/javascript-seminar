@@ -174,3 +174,84 @@
 
     add(1, 1);
 ```
+
+## Τελεστές - operators
+
+### Μαθηματικά
+
+```js
+    2 + 3; // 5
+    2 - 3; // -1
+    2 * 3; // 6
+    4 / 2; // 2
+    5 % 2; // 1
+    2 ** 4 // 16
+
+    'a' + 'b'; // ab
+
+    2 + 3 * 3; // 11
+    (2 + 3) * 3; // 15
+
+    let n = 2;
+    n += 2; // n = 4
+```
+
+### Συγκρίσεις
+
+```js
+    2 > 1;  // true
+    2 >= 2; // true
+    2 < 1;  // false
+    2 == 1; // false
+
+    '2' > 1;      // true
+    1 == true;    // true
+    0 == false;   // true
+    '' == false;  // true 
+    '' === false; // false
+    0 === false;  // false
+
+    null === undefined // false
+    null == undefined  // true
+```
+
+### Logical Operators
+
+
+```js
+    // OR ||
+    let right = true;
+    let wrong = false;
+
+    true || right  // true
+    wrong || true  // true
+    wrong || false // false
+
+    false || 1    // 1
+    '' || 'John'  // 'John'
+```
+
+```js
+    // AND &&
+    let right = true;
+    let wrong = false;
+
+    true && true   // true
+    false && true  // false
+    right && false // false
+
+    true && 0      // 0
+    true && 1      // 1
+    1 && true      // true
+```
+
+```js
+    // NOT !
+    !true  // false
+    !false // true
+    !0     // true
+    !''    // true
+
+    !!0   // false
+    !!1   // true
+```
