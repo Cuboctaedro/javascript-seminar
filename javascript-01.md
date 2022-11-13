@@ -181,66 +181,73 @@ https://codepen.io/cuboctaedro/pen/vYrxKga
 ##### Descendant Selector ( )
 
 ```css
-    section.black p {
-        color: black;
+    section.red p {
+        color: red;
     }
 
 ```
 ```html
-    <section class="black">
+    <section class="red">
         <div>
-            <h2>This is NOT black</h2>
-            <p>This is black</p>
+            <h2>This is NOT red</h2>
+            <p>This is red</p>
         </div>
     </section>
 ```
+
+https://codepen.io/cuboctaedro/pen/eYKWaZj
 
 
 ##### Child Selector (>)
 
 ```css
-    section.black > p {
-        color: black;
+    section.red > p {
+        color: red;
     }
 
 ```
 ```html
-    <section class="black">
-        <p>This is black</p>
+    <section class="red">
+        <p>This is red</p>
         <div>
-            p>This is NOT black</p>
+            <p>This is NOT red</p>
         </div>
     </section>
 ```
 
+https://codepen.io/cuboctaedro/pen/wvXdbWJ
+
 ##### Adjacent Sibling Selector (+)
 
 ```css
-    section.black + p {
-        color: black;
+    section.red + p {
+        color: red;
     }
 
 ```
 ```html
-    <section class="black">
-        <p>This is NOT black</p>
+    <section class="red">
+        <p>This is NOT red</p>
     </section>
-    <p>This is black</p>
+    <p>This is red</p>
+
+    https://codepen.io/cuboctaedro/pen/PoamvGb
 
 ```
 
 ##### Pseudo-class Selector
 ```css
+    a {
+        color: green;
+    }    
     a:hover {
         color: blue;
     }
     a:active {
         color: red;
     }
-    a:visited {
-        color: gray;
-    }
 
+https://codepen.io/cuboctaedro/pen/GRGmaNq
 ```
 
 https://frontend30.com/css-selectors-cheatsheet/
