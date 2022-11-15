@@ -73,7 +73,6 @@ https://codepen.io/cuboctaedro/pen/qBKjxgE
     <p>
     <strong>Αυτό είναι <em>σωστό</em></strong> <em>και δεν θα δημιουργήσει</em> πρόβλημα.
     </p>
-
 ```
 
 https://codepen.io/cuboctaedro/pen/vYrxKga
@@ -233,9 +232,9 @@ https://codepen.io/cuboctaedro/pen/wvXdbWJ
     </section>
     <p>This is red</p>
 
-    https://codepen.io/cuboctaedro/pen/PoamvGb
-
 ```
+
+https://codepen.io/cuboctaedro/pen/PoamvGb
 
 ##### Pseudo-class Selector
 ```css
@@ -249,8 +248,10 @@ https://codepen.io/cuboctaedro/pen/wvXdbWJ
         color: red;
     }
 
-https://codepen.io/cuboctaedro/pen/GRGmaNq
 ```
+
+https://codepen.io/cuboctaedro/pen/GRGmaNq
+
 
 https://frontend30.com/css-selectors-cheatsheet/
 

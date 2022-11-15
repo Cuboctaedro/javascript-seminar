@@ -19,6 +19,7 @@
     a = 5;        // Δίνουμε στο a την τιμή 5
     b = 6;        // Δίνουμε στο b την τιμή 6
     c = a + b;    // Δίνουμε στο c την τιμή του αθροίσματος a και b
+    alert(c);     // Δείχνουμε το c σε μήνυμα
 ```
 
 ```js
@@ -30,7 +31,7 @@
     b
     =
     6;
-    c          =               a      +                b;
+    c          =               a      +                b;alert(c);
 ``` 
 
 ## Τι μπορεί να είναι ένα statement
@@ -51,7 +52,7 @@
 * Τιμές (values), `1, 'John'`
 * Τελεστές (operators) `+, -, =, ||, &&`
 * Keywords `let, const, function, if, else`
-* Μεταβλητές, 
+* Μεταβλητές
 
 ## Μεταβλητές
 
@@ -175,6 +176,18 @@
     add(1, 1);
 ```
 
+## Type conversions
+
+Πολλές φορές ο κώδικας που γράφουμε προκαλεί μια μετάτροπή του τύπου μιας μεταβλητής.
+Αυτό μπορεί να είναι επιθυμητό ή να προκύψει από λάθος.
+
+```js
+    let one = 1;
+    let two = '2';
+    alert(one + two); // '12'
+    alert(two - one); // 1
+```
+
 ## Τελεστές - operators
 
 ### Μαθηματικά
@@ -204,13 +217,16 @@
     2 < 1;  // false
     2 == 1; // false
 
+    2 == '2'; // true
+    2 === '2' // false
+
     '2' > 1;      // true
     1 == true;    // true
     0 == false;   // true
     '' == false;  // true 
     '' === false; // false
     0 === false;  // false
-
+    
     null === undefined // false
     null == undefined  // true
 ```
@@ -254,4 +270,31 @@
 
     !!0   // false
     !!1   // true
+```
+
+### What is true?
+
+```js
+    !!0            // false
+    !!1            // true
+
+    !!''          // false
+    !!'something' // true
+
+    !!null        // false
+    !!undefined   // false
+    !!NaN         // false
+
+    !![]          // true!
+    !!{}          // true!
+ ```
+
+### Strings to numbers
+```js
+    let three = '3';
+    let realThree = parseInt(three, 10);
+
+    let twoAndHalf = '2.5';
+    let realTwoAndHalf = parseFloat(twoAndHalf);
+
 ```
