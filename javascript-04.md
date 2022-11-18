@@ -21,10 +21,12 @@
 ```js
     {
         let username = 'John';
-        console.log('Inside username: ' + username); // 'Inside username: John'
+        console.log('Inside username: ' + username);
+        // 'Inside username: John'
     }
 
-    console.log('Outside username: ' + username); // Uncaught ReferenceError: username is not defined
+    console.log('Outside username: ' + username);
+    // Uncaught ReferenceError: username is not defined
 ```
 
 ```js
