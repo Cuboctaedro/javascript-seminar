@@ -16,41 +16,61 @@
 Όταν ορίζουμε μία μεταβλητή με `let` μέσα σε ένα block αυτή υπάρχει μόνο μέσα στο block.
 Δεν συμβαίνει το ίδιο όταν χρησιμοποιούμε `var` και αυτός είναι ο βασικός λόγος που το αποφεύγουμε.
 
+### Διαφορά let με var
+
 ```js
     {
         let username = 'John';
-        console.log('Hello ' + username); // 'Hello John'
+        console.log('Inside username: ' + username); // 'Inside username: John'
     }
 
-    console.log('Hello ' + username); // Uncaught ReferenceError: username is not defined
+    console.log('Outside username: ' + username); // Uncaught ReferenceError: username is not defined
 ```
-
 
 ```js
     {
-        var username2 = 'John';
-        console.log('Hello ' + username2); // 'Hello John'
+        var username = 'John';
+        console.log('Inside username: ' + username); // 'Inside username: John'
     }
 
-    console.log('Hello ' + username2); // 'Hello John'
+    console.log('Outside username: ' + username); // 'Outside username:  John'
+```
+
+### Διαφορά let με const
+
+```js
+    let username = 'John';
+
+    console.log('Outside username: ' + username); // 'Outside username: John'
+
+    {
+        username = 'Mary';
+        console.log('Inside username: ' + username); // 'Inside username: Mary'
+    }
+
+    console.log('Outside username: ' + username); // 'Outside username: Mary'
 ```
 
 ```js
     const nameOne = 'John';
 
+    console.log('Outside nameOne: ' + nameOne); // 'Hello John'
+
     {
-        const nameTwo = 'Jane';
-        console.log('Hello ' + nameOne); // 'Hello John'
-        console.log('Hello ' + nameTwo); // 'Hello Jane'
+        console.log('Inside nameOne: ' + nameOne); // 'Hello John'
+
+        // nameOne = 'Jane'; Δεν γίνεται!
+
+        const nameTwo = 'Mary';
+        console.log('Inside nameTwo: ' + nameTwo); // 'Hello Mary'
     }
 
-    console.log('Hello ' + nameOne); // 'Hello John'
-    console.log('Hello ' + nameTwo); // Uncaught ReferenceError: nameTwo is not defined
+    console.log('Outside nameOne: ' + nameOne); // 'Hello John'
 
-    const nameTwo = 'Jane';
-    console.log('Hello ' + nameTwo); // 'Hello Jane'
-
+    console.log('Outside nameTwo: ' + nameTwo); // Uncaught ReferenceError: nameTwo is not defined
 ```
+
+
 
 Ο δεύτερος λόγος που δεν χρησιμοποιούμε `var`.
 
@@ -93,6 +113,8 @@
 Το `if else` μας δίνει την δυνατότητα να εκτελέσουμε ένα block κώδικα μόνο όταν είναι αληθής μια συνθήκη.
 
 ```js
+    let hour = 12;
+
     if (hour < 10) {
         console.log("Good morning");
     } else if (hour < 20) {
@@ -134,7 +156,7 @@
             day = "Saturday";
     }
 
-    alert('Today is ' + day);
+    console.log('Today is ' + day);
 ```
 
 Πρέπει να έχουμε και το `break` αλλιώς όταν βρεθεί ένα σωστό `case` θα εκτελεστεί και αυτό και όλα τα επόμενα χωρίς να γίνεται έλεγχος.
@@ -152,7 +174,8 @@
     while (i < 11) {
         console.log( i );
         i += 1;
-    } // 1 ... 10
+    }
+    // 1 ... 10
 ```
 
 ## Loops 2, do while
@@ -165,7 +188,17 @@
     do {
         console.log( i );
         i += 1;
-    }  while (i < 11); // 1 ... 10
+    }  while (i < 11);
+    // 1 ... 10
+```
+
+```js
+    let i = 12;
+
+    while (i < 11) {
+        console.log( i );
+        i += 1;
+    }
 ```
 
 ```js
@@ -174,7 +207,8 @@
     do {
         console.log( i );
         i += 1;
-    }  while (i < 11); // 12
+    }  while (i < 11);
+    // 12
 ```
 
 ## Loops 3, for
@@ -190,5 +224,6 @@
 ```js
     for (let i = 1; i < 11; i += 1) { 
         console.log(i);
-    } // 1 ... 10
+    }
+    // 1 ... 10
 ```
