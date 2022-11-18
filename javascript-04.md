@@ -6,8 +6,8 @@
 
 ```js
     {
-        let name = 'John';
-        alert('Hello ' + name);
+        let username = 'John';
+        alert('Hello ' + username);
     }
 ```
 
@@ -18,21 +18,21 @@
 
 ```js
     {
-        let name = 'John';
-        alert('Hello ' + name); // 'Hello John'
+        let username = 'John';
+        alert('Hello ' + username); // 'Hello John'
     }
 
-    alert('Hello ' + name); // 'Hello'
+    alert('Hello ' + username); // Uncaught ReferenceError: username is not defined
 ```
 
 
 ```js
     {
-        var otherName = 'John';
-        alert('Hello ' + otherName); // 'Hello John'
+        var username2 = 'John';
+        alert('Hello ' + username2); // 'Hello John'
     }
 
-    alert('Hello ' + otherName); // 'Hello John'
+    alert('Hello ' + username2); // 'Hello John'
 ```
 
 ```js
