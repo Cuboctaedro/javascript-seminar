@@ -297,3 +297,30 @@
     let realTwoAndHalf = parseFloat(twoAndHalf);
 
 ```
+
+## Βασική επικοινωνία με το χρήστη
+
+### Alert
+
+Δείχνουμε ένα μήνυμα στο χρήστη και περιμένουμε να πατήσει το OK.
+
+```js
+    alert("Hello");
+```
+
+### Prompt
+
+Ζητάμε από το χρήστη να μας δώσει μία τιμή που μπορούμε να κρατήσουμε σε μια μεταβλητή.
+
+```js
+    const result = prompt('What is your name?', '...');
+```
+
+### Confirm
+
+Ζητάμε από το χρήστη να μας δώσει μια boolean τιμή.
+
+```js
+    const result = confirm('Do you agree?');
+```
+https://github.com/Cuboctaedro/js-seminar-ex-02-user-interaction
