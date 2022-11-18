@@ -19,20 +19,20 @@
 ```js
     {
         let username = 'John';
-        alert('Hello ' + username); // 'Hello John'
+        console.log('Hello ' + username); // 'Hello John'
     }
 
-    alert('Hello ' + username); // Uncaught ReferenceError: username is not defined
+    console.log('Hello ' + username); // Uncaught ReferenceError: username is not defined
 ```
 
 
 ```js
     {
         var username2 = 'John';
-        alert('Hello ' + username2); // 'Hello John'
+        console.log('Hello ' + username2); // 'Hello John'
     }
 
-    alert('Hello ' + username2); // 'Hello John'
+    console.log('Hello ' + username2); // 'Hello John'
 ```
 
 ```js
@@ -40,15 +40,15 @@
 
     {
         const nameTwo = 'Jane';
-        alert('Hello ' + nameOne); // 'Hello John'
-        alert('Hello ' + nameTwo); // 'Hello Jane'
+        console.log('Hello ' + nameOne); // 'Hello John'
+        console.log('Hello ' + nameTwo); // 'Hello Jane'
     }
 
-    alert('Hello ' + nameOne); // 'Hello John'
-    alert('Hello ' + nameTwo); // Uncaught ReferenceError: nameTwo is not defined
+    console.log('Hello ' + nameOne); // 'Hello John'
+    console.log('Hello ' + nameTwo); // Uncaught ReferenceError: nameTwo is not defined
 
     const nameTwo = 'Jane';
-    alert('Hello ' + nameTwo); // 'Hello Jane'
+    console.log('Hello ' + nameTwo); // 'Hello Jane'
 
 ```
 
@@ -58,7 +58,7 @@
     /*
         Με let ή const δεν μπορούμε να χρησιμοποιήσουμε μια μεταβλητή πριν την ορίσουμε.
     */
-    alert('Hello ' + nameTwo);
+    console.log('Hello ' + nameTwo);
     // Uncaught ReferenceError: can't access lexical declaration 'nameTwo' before initialization
     const nameTwo = 'Jane';  
 ```
@@ -67,7 +67,7 @@
 
 ```js
 
-    alert('Hello ' + nameOne);
+    console.log('Hello ' + nameOne);
     // 'Hello undefined'
 
     var nameOne = 'John'; 
@@ -79,7 +79,7 @@
 ```js
     var nameOne
 
-    alert('Hello ' + nameOne);
+    console.log('Hello ' + nameOne);
 
     nameOne = 'John'; 
 ```
@@ -94,11 +94,11 @@
 
 ```js
     if (hour < 10) {
-        alert("Good morning");
+        console.log("Good morning");
     } else if (hour < 20) {
-        alert("Good day");
+        console.log("Good day");
     } else {
-        alert("Good evening");
+        console.log("Good evening");
     } 
 ```
 
@@ -150,7 +150,7 @@
     let i = 1;
 
     while (i < 11) {
-        alert( i );
+        console.log( i );
         i += 1;
     } // 1 ... 10
 ```
@@ -163,7 +163,7 @@
     let i = 1;
 
     do {
-        alert( i );
+        console.log( i );
         i += 1;
     }  while (i < 11); // 1 ... 10
 ```
@@ -172,7 +172,7 @@
     let i = 12;
 
     do {
-        alert( i );
+        console.log( i );
         i += 1;
     }  while (i < 11); // 12
 ```
@@ -189,6 +189,6 @@
 
 ```js
     for (let i = 1; i < 11; i += 1) { 
-        alert(i);
+        console.log(i);
     } // 1 ... 10
 ```
