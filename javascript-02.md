@@ -156,7 +156,7 @@
         'Κυριακή',
     ];
 
-    const mix = ['Hello', 1, , true, { name: 'John'}, [1, 2, 3]];
+    const mix = ['Hello', 1, true, { name: 'John'}, [1, 2, 3]];
 ```
 
 ### Function
