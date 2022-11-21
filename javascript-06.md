@@ -252,6 +252,20 @@
 
 ```
 
+Επήσης μπορούμε να πάρουμε τα keys ή τις τιμές ή και τα δύο σαν arrays:
+
+```js
+    let user = {
+        name: 'John',
+        age: 23,
+        isAdmin: true,
+    };
+
+    console.log(Object.keys(user));     // [ 'name', 'age', 'isAdmin' ]
+    console.log(Object.values(user));   // [ 'John', 23, true ]
+    console.log(Object.entries(user));  // [ [ 'name', 'John' ], [ 'age', 23 ], [ 'isAdmin', true ] ]
+```
+
 ## Object methods
 
 Οπως είδαμε ένα object μπορεί να περιλαμβάνει και functions.
