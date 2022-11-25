@@ -207,6 +207,7 @@
 ```
 Μπορούμε να δημιουργήσουμε μια συγκεκριμένη ημερομηνία, δίνοντας παραμέτρους στο Date.
 
+Όταν δεν δίνουμε ώρα αυτή μπαίνει σαν 00:00:00
 
 ```js
     /*
@@ -222,7 +223,7 @@
         year, month, date, hours, minutes, seconds, ms
     */
     let today = new Date(2022, 10, 21, 18, 0, 0); 
-    console.log( today ); // 2022-11-21T16:00:00.000Z
+    console.log( today );
 ```
 
 ```js
@@ -232,6 +233,20 @@
     let today = new Date(1669036808225); 
     console.log( today ); 
 ```
+
+Διαφορά τοπικής και UTC ημερομηνίας
+
+```js
+    /*
+        year, month, date, hours, minutes, seconds, ms
+    */
+    let today1 = new Date(2022, 10, 21, 18, 0, 0); 
+    let today2 = new Date(Date.UTC(2022, 10, 21, 18, 0, 0)); 
+    console.log( today1 );
+    console.log( today2 );
+```
+
+
 
 ### Πως παίρνουμε στοιχεία από το Date
 
@@ -314,4 +329,189 @@
     let date = Date.now();
     
     console.log(date);
+```
+
+Θυμηθείτε ότι οι μήνες και οι μέρες της βδομάδας μετριούνται από το 0. Η ημέρα του μήνα όχι
+
+```js
+    let date = new Date(2022, 10, 0, 12); 
+    
+    console.log(date);
+    // 2022-10-31T10:00:00.000Z
+```
+
+## Ασκήσεις
+
+### Protect email
+Γράψτε μία συνάρτηση που να παίρνει σαν παράμετρο μια διεύθυνση email και να την αλλάζει έτσι ώστε να μπορούμε να τη διαβάζουμε αλλά να μην είναι αυτόματα αναγνωρίσιμη σαν email, για παράδειγμα: john@email.com -> john(a)email.com
+
+### Truncate
+Γράψτε μία συνάρτηση που να κόβει ένα string σε ένα συγκεκριμένο αριθμό χαρακτήρων. Πρέπει να έχει τη δυνατότητα να προσθέτει ένα τέλος στο κομμένο string (πχ '...'). Τέλος αλλάξτε τη συνάρτηση έτσι ώστε να μην κόβει λέξεις στη μέση και να κόβει το string σε ένα αριθμό χαρακτήρων όσο πιο κοντά σε αυτόν που δίνεται.
+
+```js
+    function truncate(string, characters, ending) {
+        // your function
+    }
+
+    // Test
+    let testString = 'The quick brown fox jumps over the lazy dog';
+
+    truncate(testString, 22, '...');
+    // The quick brown fox ju..
+    // και στη δεύτερη περίπτωση:
+    // The quick brown fox..
+```
+
+### Capitalize
+Γράψτε ένα function που να παίρνει ένα string και να το επιστρέφει με το πρώτο γράμμα κάθε λέξης κεφαλαίο και τα υπόλοιπα μικρά.
+
+```js
+    function capitalize(string) {
+        // your function
+    }
+
+    let testString1 = 'The quick brown fox jumps over the lazy dog';
+    let testString2 = 'THE QUICK BROWN FOX JUMPS OVER THE LAZY DOG';
+    capitalize(testString1);
+    capitalize(testString2);
+    // The Quick Brown Fox Jumps Over The Lazy Dog
+```
+
+### Percentage
+Γράψτε μια συνάρτηση που να μας δίνει το ποσοστό % ενός αριθμού σε ένα σύνολο.
+
+```js
+    function percentage(number, total) {
+        // your function
+    }
+
+    percentage(5, 50);
+    // 10%
+    percentage(9, 45);
+    // 20%
+
+```
+
+### Ζάρι
+Γράψτε μια συνάρτηση που να μας δίνει έναν τυχαίο ακέραιο από 1 εώς 6.
+
+Μετά γράψτε μια συνάρτηση που να μας δίνει ένα τυχαίο ακέραιο ανάμεσα σε δύο ακέραιους που θα δίνουμε σαν arguments.
+
+```js
+    function dice() {
+        // your function
+    }
+
+    dice();
+    // 1 - 6
+
+    function randomInt(min, max) {
+        // your function
+    }
+
+    randomInt(3, 12);
+    // 3 - 12
+```
+
+### Max of array
+Γράψτε μια συνάρτηση που να μας δίνει τον μεγαλύτερο αριθμό από ένα array αριθμών.
+
+```js
+    function arrayMax(numArray) {
+        // your function
+    }
+
+    let testArray = [12, -4, 0, 2.3, 3004, 24, 7, -40000, 0];
+
+    arrayMax(testArray);
+    // 3004
+```
+
+### Ορθογώνιο τρίγωνο
+Γράψτε μια συνάρτηση που να της δίνουμε τα μήκη των πλευρών ενός τριγώνου και να μας λέει αν είναι ορθογώνιο.
+Το Πυθαγόρειο θεώρημα λέει πως σε ένα ορθογώνιο τρίγωνο το αθροισμα των τετραγώνων των δύο καθέτων πλευρών (των πιο μικρών) είνα ίσο με το τετράγωνο της υποτείνουσας.
+
+```js
+    function isRightAngle(a, b, c) {
+        // your function
+    }
+
+    isRightAngle(3, 4, 5);
+    // true
+
+    isRightAngle(3, 4, 6);
+    // false
+```
+
+### Σαββατοκύριακο
+Γράψτε μια συνάρτηση που να ελέγχει αν μία ημερομηνία πέφτει σε Σαββατοκύριακο.
+
+### Ημερομηνία
+Γράψτε μια συνάρτηση που να μας επιστρέφει την ημερομηνία με τη παρακάτων μορφή:
+
+"Σήμερα είναι Παρασκευή, 25 Νοεμβρίου του 2022"
+
+```js
+
+    function printDate() {
+        // your function
+    }
+
+    printDate();
+    // "Σήμερα είναι Παρασκευή, 25 Νοεμβρίου του 2022"
+```
+
+### Days in month
+Γράψτε μια συνάρτηση που να μας δίνει πόσες μέρες έχει ένας μήνας για μία συγκεκριμένη χρονιά.
+
+```js
+    function daysInMonth(month, year) {
+        // your function
+    }
+
+    daysInMonth(12, 2022);
+    // 31
+
+    daysInMonth(2, 2023);
+
+```
+
+### Διαφορά σε μέρες
+Γράψτε μια συνάρτηση που να μας δίνει τη διαφορά σε μέρες ανάμεσα σε δύο ημερομηνίες
+
+```js
+    function diffrenceInDays(date1, date2) {
+        // your function
+    }
+
+    let d1 = '2022-11-20';
+    let d2 = '2022-11-25';
+
+    diffrenceInDays(d1, d2);
+
+```
+
+### Διαφορά ώρας
+Γράψτε μια συνάρτηση που να μας δίνει τη διαφορά της τοπικής ώρας απο την UTC με τη μορφή "+02:00"
+
+
+### Αλλαγή ημερομηνίας 
+Γράψτε συναρτήσεις για να προσθέτουμε σε μία ημερομηνία ώρες, μέρες, βδομάδες ή μήνες.
+
+```js
+    function addHours(date, hours) {
+        // your function
+    }
+
+    function addDays(date, days) {
+        // your function
+    }
+
+    function addWeeks(date, weeks) {
+        // your function
+    }
+
+    function addMonths(date, months) {
+        // your function
+    }
 ```
