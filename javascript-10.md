@@ -336,12 +336,13 @@ https://javascript.info/searching-elements-dom#summary
 η JavaScript διακρίνει τα standard attributes σε κάθε html tag και τα μεταφέρει ως properties στο αντίστοιχο object στο DOM.
 
 ```html
-    <input type="text" id="elem" value="value">
+    <input type="text" id="elem" value="value" class="input">
 
     <script>
         alert(elem.type); // "text"
         alert(elem.id); // "elem"
         alert(elem.value); // value
+        alert(elem.className); // input
     </script>
 
 ```
@@ -369,6 +370,8 @@ https://javascript.info/searching-elements-dom#summary
 
 #### Τα attributes είναι case insensitive
 
+Σε αντίθεση με τα κανονικά object properties και τις μεταβλητές της JavaScript τα attributes είναι case insensitive!
+
 ```html
     <input type="text" value="value">
 
@@ -379,3 +382,123 @@ https://javascript.info/searching-elements-dom#summary
     </script>
 
 ```
+#### Συγχρονισμός attribute - property
+
+Σε γενικές γραμμές οι αλλαγές των attributes περνάνε αυτόματα στα properties και αντίστροφα.
+
+Υπάρχουν κάποιες εξαιρέσεις όπως το input.value.
+
+```html
+    <input id="input" type="text" value="Hi!">
+
+    <script>
+
+        const input = document.getElementById('input');
+
+        alert(input.value);  // Hi
+
+        alert(input.getAttribute('value'));  // Hi
+
+        input.setAttribute('value', 'Hello');
+
+        alert(input.value);   // Hello
+
+        alert(input.getAttribute('value'));   // Hello
+
+        input.value = 'Yes';
+
+        alert(input.value);   // Yes
+
+        alert(input.getAttribute('value'));   // Hello
+
+
+    </script>
+
+```
+
+#### Property types
+
+Τα περισσότερα properties ειναι strings όπως και τα αντίστοιχα attributes του html. Υπάρχουν κάποιες εξαιρέσεις όπως το style και το checked
+
+```html
+    <input id="input" type="checkbox" checked>
+
+    <script>
+        alert(input.getAttribute('checked')); // the attribute value is: empty string
+        alert(input.checked); // the property value is: true
+    </script>
+````
+
+```html
+    <div id="div" style="color:red;font-size:120%">Hello</div>
+
+    <script>
+        alert(div.getAttribute('style')); // color:red;font-size:120%
+
+        // object
+        alert(div.style); // [object CSSStyleDeclaration]
+        alert(div.style.color); // red
+    </script>
+```
+
+#### Custom attributes
+
+Μπορούμε να εισάγουμε στο html που γράφουμε δικά μας attributes σε κάποια στοιχεία για να τα χρησιμοποιήσουμε μετά.
+
+```html
+    <style>
+        .order[order-state="new"] {
+            color: green;
+        }
+
+        .order[order-state="pending"] {
+            color: blue;
+        }
+
+        .order[order-state="canceled"] {
+            color: red;
+        }
+    </style>
+
+    <div class="order" order-state="new" id="order-1">
+        A new order.
+    </div>
+
+    <div class="order" order-state="pending" id="order-2">
+        A pending order.
+    </div>
+
+    <div class="order" order-state="canceled" id="order-3">
+        A canceled order.
+    </div>
+```
+
+Θα μπορούσαμε να κάνουμε το ίδιο με class αλλά οι αλλαγές γίνονται πιο εύκολα στο custom property.
+
+Προτιμάμε όμως να ξεκινάμε τα custom attributes με το `data-` έτσι ώστε να είναι όλα διαθέσιμα στο property `dataset`.
+
+```html
+    <style>
+        .order[data-order-state="new"] {
+            color: green;
+        }
+
+        .order[data-order-state="pending"] {
+            color: blue;
+        }
+
+        .order[data-order-state="canceled"] {
+            color: red;
+        }
+    </style>
+
+    <div class="order" data-order-state="new" id="order-1">
+        A new order.
+    </div>
+
+    <script>
+        document.getElementById('order-1').dataset.orderState = 'canceled';
+    </script>
+
+```
+
