@@ -319,3 +319,79 @@
         // θα μας δώσει το width σε px
     </script>
 ```
+## Ασκήσεις
+
+### Browser tools
+Μία εύκολη άσκηση για να συνηθίσετε να δουλεύετε με τα εργαλεία του browser:
+* Ανοίξτε δύο tabs στο browser, ένα στο google.com και ένα στο yahoo.com
+* Στο tab του yahoo ανοίξτε με δεξί κλικ το inspector, βρείτε το img tag με το logo του yahoo και αντιγράψτε το
+* Στο tab του google βρείτε το img tag του logo με τον ίδιο τρόπο, σβήστε το και βάλτε στη θέση του αυτό του yahoo
+* Ή δοκιμάστε να κάνετε το ίδιο σε όποιες σελίδες προτιμάτε
+
+### Add to list
+Προσθέστε τα στοιχεία του `fruitList` σαν items μέσα στη λίστα.
+
+```html
+     <ul></ul>
+
+     <script>
+        const fruitList = ["apple", "banana", "tomato"];
+    </script>
+```
+
+### Add to table
+
+Γράψτε μία συνάρτηση που να προσθέτει στοιχεά σε ένα πίνακα.
+
+```html
+     <table id="table-1">
+        <tr>
+            <td>Row1 cell1</td>
+            <td>Row1 cell2</td>
+        </tr>
+        <tr>
+            <td>Row2 cell1</td>
+            <td>Row2 cell2</td>
+        </tr>
+    </table>
+
+     <script>
+        function addRow(cell1, cell2) {
+
+        }
+    </script>
+```
+
+### Show alert
+
+Γράψτε μία συνάρτηση που να εμφανίζει μία ειδοποίηση στην αρχή της σελίδας. Το css θα υπάρχει στη σελίδα από την αρχή αλλά το div με την ειδοποίηση όχι.
+
+```html
+    <style>
+        .alert {
+            padding: 15px;
+            border: 1px solid #d6e9c6;
+            border-radius: 4px;
+            color: #3c763d;
+            background-color: #dff0d8;
+        }
+    </style>
+
+    <div class="alert">
+        Hi there! You've read an important message.
+    </div>
+
+    <script>
+        function showAlert(alertText) {
+
+            // setTimeout(() => alert.remove(), 3000);
+        }
+    </script>
+
+```
+
+### Tasks app, συνέχεια
+
+Κατεβάστε τα αρχεία από εδώ:
+https://github.com/Cuboctaedro/todo-app
+Γράψτε τον απαραίτητο κώδικα ωστε να γεμίσει το table με τα δεδομένα που υπάρχουν στο αρχείο data.js (έχει φορτωθεί ήδη στο html και η μεταβλητή tasks είναι διαθέσιμη). Εμφανίστε τα με τη μορφή που έχουν τα δυο `<tr>` που υπάρχουν σαν παράδειγμα.
