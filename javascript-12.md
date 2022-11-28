@@ -351,3 +351,18 @@
     </div>
 
 ```
+
+## Ασκήσεις
+
+### Alert
+Κατεβάστε τον κώδικα από εδώ:
+https://github.com/Cuboctaedro/alert
+
+Γράψτε τον απαραίτητο κώδικα έτσι ώστε να εμφανίζεται το notification όταν πατάμε ένα από τα buttons.
+Βάλτε το κάθε button να προσθέτει το σωστό class στο notification για να έχει την αντίστοιχη εμφάνιση.
+Τέλος κάντε να δουλεύει και το close button που υπάρχει μέσα στο notification.
+
+### Tasks app, συνέχεια
+Κατεβάστε τα αρχεία από εδώ:
+https://github.com/Cuboctaedro/todo-app/tree/sorting
+Γράψτε τον απαραίτητο κώδικα έτσι ώστε να δουλεύουν τα buttons για sorting και filtering
