@@ -371,6 +371,15 @@ https://github.com/Cuboctaedro/alert
 https://github.com/Cuboctaedro/tabs
 Ο σκοπός είναι να κάνουμε τα tabs να συμπεριφέρονται σωστά σαν tabs. Θέλουμε κάθε φορά να φαίνεται μόνο ένα από τα sections περιεχομένου ανάλογα με το ποιο tab έχουμε πατήσει. Επήσης πρέπει να κρατάμε το class `is-active` μόνο στο σωστό tab. Το Bulma μας δίνει το class `is-hidden` που μπορούμε να χρησιμοποιήσουμε για να κρύψουμε στοιχέια.
 
+### Modal
+Κατεβάστε τον κώδικα από εδώ:
+https://github.com/Cuboctaedro/modal
+
+Γράψτε τον απαραίτητο κώδικα έτσι ώστε να εμφανίζεται το modal όταν πατάμε το button.
+Κάντε να δουλεύει το close button που υπάρχει μέσα στο modal.
+Τέλος, κάντε το modal να εξαφανίζεται όταν κάνουμε κλικ έξω από αυτό.
+
+
 ### Tasks app, συνέχεια
 Κατεβάστε τα αρχεία από εδώ:
 https://github.com/Cuboctaedro/todo-app/tree/sorting
