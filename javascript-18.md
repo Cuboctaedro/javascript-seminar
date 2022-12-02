@@ -298,6 +298,45 @@
 
 ```
 
+## Form Data
+
+Ενας τρόπος να στείλουμε τα δεδομένα μίας φόρμας είναι να τα μεταρέψουμε σε JSON, ένας άλλος είναι το `FormData` object. Κάθε φορά εξαρτάται από τις προδιαγραφές που μας θέτει ο server ή το API με το οποίο δουλεύουμε. Το `FormData` χρησιμοποιέιται συχνά σε φόρμες που έχουν και file upload.
+
+```html
+    <form id="formElem">
+        <input type="text" name="name" value="John">
+        <input type="text" name="surname" value="Smith">
+        <input type="submit">
+    </form>
+
+    <script>
+        const formElem = document.getElementById('formElem');
+
+        formElem.onsubmit = async (e) => {
+            e.preventDefault();
+
+            let response = await fetch('/some/url', {
+                method: 'POST',
+                body: new FormData(formElem)
+            });
+
+            let result = await response.json();
+
+            alert(result.message);
+        };
+    </script>
+```
+Αν περάσουμε στο `FormData` σαν παράμετρο ένα form element τότε θα διαβάσει κατευθείαν τα values και θα τα προσθέσει στα data.
+Το `FormData` object έχει τις παρακάτω μεθόδους:
+
+* `formData.append(name, value)` προσθέτει ένα πεδίο με όνομα `name` και τιμή `value`
+* `formData.append(name, blob, fileName)` προσθέτει ένα πεδίο σαν `<input type="file">` με όνομα `name`, περιεχόμενο αρχείου `blob` και όνομα αρχείου `fileName`.
+* `formData.delete(name)` αφαιρεί από τη φόρμα το πεδίο με όνομα `name`
+* `formData.get(name)` μας επιστρέφει το value του πεδίου με όνομα `name`
+* `formData.has(name)` τσεκάρει αν υπάρχει στη φόρμα πεδίο με όνομα `name`
+* `formData.set(name, value)` προσθέτει ένα πεδίο με όνομα `name` και τιμή `value`, σβήνοντας όμως όποιο προηγούμενο πεδίο υπήρχε με το ίδιο όνομα (θεωρητικά μπορούμε να έχουμε πολλά πεδία με το ίδιο όνομα σε μία φόρμα)
+
+
 ## Ασκήσεις 
 
 ### Validation
