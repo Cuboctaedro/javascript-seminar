@@ -344,6 +344,12 @@
 https://github.com/Cuboctaedro/simple-form-validation
 Προσθέστε validation στη φόρμα. Αν το όνομα είναι πολύ μικρό ή αν το email δεν έχει @ εμφανίστε μετά το submit μήνυμα όπως στο email. αν όλα είναι σωστά προχωρίστε το submit και εμφανίστε τα δεδομένα που έδωσε ο χρήστης στο message που υπάρχει πάνω από τη φόρμα.
 
+### POST submit
+Πάρτε τον κώδικα από εδώ:
+https://github.com/Cuboctaedro/form-post
+Στείλτε το περιεχόμενο της φόρμας στο url που υπάρχει στο script. Εμφανίστε το notification με το κατάλληλο class και περιεχόμενο ανάλογα με το αποτέλεσμα που θα λάβετε.
+https://jsonplaceholder.typicode.com/guide/
+
 ### Tasks App
 https://github.com/Cuboctaedro/todo-app/tree/form
 Προσθέστε τη φόρμα στην εφαρμογή έστι ώστε να προσθέτει καινούρια task στη λίστα.
