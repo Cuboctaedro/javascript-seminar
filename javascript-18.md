@@ -1,4 +1,4 @@
-# LocalStorage
+## LocalStorage
 
 Υπάρχουν δίαφοροι τρόποι να σώσουμε δεδομένα στο browser. 
 
@@ -34,3 +34,27 @@
 ## sessionStorage
 
 Το `sessionStorage` λειτουργεί με παρόμοιο τρόπο αλλά ισχύει μόνο για ένα συγκεκριμένο browser tab και χάνεται όταν κλείσει το tab.
+
+## Πρόσβαση στο url
+
+Μπορούμε να διαβάσουμε το url της σελίδας που βρισκόμαστε από το window object.
+
+```js
+    const url = window.location.href;
+```
+
+Μπορούμε να αλλάξουμε το url χωρίς να προκαλέσουμε επαναφόρτωση στης σελίδας από το history object
+
+```js
+    // Current URL: https://my-website.com/page_a
+    const nextURL = 'https://my-website.com/page_b';
+    const nextTitle = 'My new page title';
+    const nextState = { additionalInformation: 'Updated the URL with JS' };
+
+    // This will create a new entry in the browser's history, without reloading
+    window.history.pushState(nextState, nextTitle, nextURL);
+
+    // This will replace the current entry in the browser's history, without reloading
+    window.history.replaceState(nextState, nextTitle, nextURL);
+
+```
