@@ -163,25 +163,28 @@ https://nodejs.dev/en/api/v19/documentation/
 ```js
     const http = require('http');
 
-    http.createServer(function (req, res) {
-        res.writeHead(200, {'Content-Type': 'text/html'});
-        res.write('Hello World!'); //write a response to the client
-        res.end(); //end the response
+    http.createServer(function (request, response) {
+        response.writeHead(200, {'Content-Type': 'text/html'});
+        response.write('Hello World!'); //write a response to the client
+        response.end(); //end the response
         console.log('Listening on http://localhost:8080/')
     }).listen(8080); //the server object listens on port 8080
 ```
 
-Οι παράμετροι `req` και `res` είναι αντίστοιχα το request object που δέχεται ο server και το response object που θα δώσει.
+Οι παράμετροι `req` και `response` είναι αντίστοιχα το request object που δέχεται ο server και το response object που θα δώσει.
 
 Μπορούμε λοιπόν να διαβάσουμε στοιχεία από το request και να τα χρησιμοποιήσουμε στην απάντηση μας:
 
 ```js
     const http = require('http');
 
-    http.createServer(function (req, res) {
-        res.writeHead(200, {'Content-Type': 'text/html'});
-        res.write(req.url) // Στέλνουμε σαν απάντηση το url που μας ζητήθηκε
-        res.end();
+    http.createServer(function (request, response) {
+        response.writeHead(200, {'Content-Type': 'text/html'});
+        response.write(`
+            <h1>Hello!</h1>
+            <p>You asked for <code>${request.url}</code></p>`
+        );
+        response.end();
         console.log('Listening on http://localhost:8080/')
     }).listen(8080);
 ```
