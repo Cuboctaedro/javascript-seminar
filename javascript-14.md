@@ -151,6 +151,34 @@ npx parcel index.html
 ```
 Τώρα με την εντολή `npm run start` θα τρέχει ο dev server του Parcel (αντί για το Go Live που χρησιμοποιούσαμε) και παράλληλα το Parcel θα κάνει ένα bundle του κώδικα μας και θα παρακολουθεί τις αλλαγές. Με την εντολή `npm run build` το Parcel θα δημιουργήσει ένα folder με τον τελικό κώδικα της εφαρμογής.
 
+### Html includes με το Parcel
+
+Όταν χρησιμοποιούμε ένα build tool μας δίνονται διάφορες δυνατότητες για να οργανώσουμε καλυτερα τον κώδικα μας και να είμαστε πιο παραγωγικοί. Μπορούμε να χρησιμοποιήσουμε εύκολα CSS preproccessors όπως το SCSS ή το PostCSS και μπορούμε να χρησιμοποιήσουμε και κάποια tools για το html.
+
+Ένα πολύ χρήσιμο εργαλείο για το html είναι η δυνατότητα να χωρίσουμε τη σελίδα μας σε μικρότερα αρχεία τα οποία να κάνουμε import στο τελικό html. Αυτό μπορεί να γίνει εύκολα αν χρησιμοποιούμε κάποιο framework όπως η React ή κάποιο template engine όπως Pug, Handlebars ή Nunjucks. Όμως το framework είναι κάτι μεγάλο που δεν προσθέτουμε εύκολα στον κώδικα μας και τα template engines τείνουν να εξαφανιστούν από τη στγμή που μπορούμε παντού να χρησιμοποιούμε backticks (``). 
+
+Μπορούμε λοιπόν να σετάρουμε το Parcel να χρησιμοποιεί το PostHtml και το module `posthtml-include` με βάση αυτές τις οδηγίες:
+https://parceljs.org/languages/html/#posthtml
+και έτσι να έχουμε include μέσα στο html
+
+```html
+    <!--header.html-->
+    <header>This is my header</header>
+
+    <!--index.html-->
+    <html>
+        <head>
+            <title>Home</title>
+        </head>
+        <body>
+            <include src="header.html"></include>
+            <main>My content</main>
+        </body>
+    </html>
+```
+
+Κάνοντας build το Parcel θα μεταφέρει το περιεχόμενο του ενός αρχείου στο άλλο εξαφανίζοντας το tag `<include>`.
+
 ## Άλλα tools
 
 Υπάρχουν πολλά άλλα εργαλεία που μπορείτε να εισάγετε στο project σας σαν devDependencies για να σας βοηθήσουν. Από τα πιο διαδεδομένα είναι το `eslint` που βρίσκει και διορθώνει λάθη στον κώδικα και το `pretier` που φροντίζει αυτόματα να τηρεί ο κώδικας σας κάποια στάνταρ ως προς το formating, (κενά, κόμματα, κλπ).
