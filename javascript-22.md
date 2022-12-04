@@ -156,4 +156,32 @@ https://nodejs.dev/en/api/v19/documentation/
 └──────────┴──┴──────────┴──────────┴────────────────────────┴──────────┴────────────────┴───────┘
 
 ```
+## Web Server
 
+Η Node περιέχει τα modules http και https που μπορούν να χρησιμοποιηθούν για να δημιουργήσουν ένα web server. 
+
+```js
+    const http = require('http');
+
+    http.createServer(function (req, res) {
+        res.writeHead(200, {'Content-Type': 'text/html'});
+        res.write('Hello World!'); //write a response to the client
+        res.end(); //end the response
+        console.log('Listening on http://localhost:8080/')
+    }).listen(8080); //the server object listens on port 8080
+```
+
+Οι παράμετροι `req` και `res` είναι αντίστοιχα το request object που δέχεται ο server και το response object που θα δώσει.
+
+Μπορούμε λοιπόν να διαβάσουμε στοιχεία από το request και να τα χρησιμοποιήσουμε στην απάντηση μας:
+
+```js
+    const http = require('http');
+
+    http.createServer(function (req, res) {
+        res.writeHead(200, {'Content-Type': 'text/html'});
+        res.write(req.url) // Στέλνουμε σαν απάντηση το url που μας ζητήθηκε
+        res.end();
+        console.log('Listening on http://localhost:8080/')
+    }).listen(8080);
+```
