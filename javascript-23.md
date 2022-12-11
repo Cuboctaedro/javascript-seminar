@@ -358,6 +358,56 @@
     // type UserData = User;
 ```
 
+### Generic Types
+
+Μπορούμε να δημιουργήσουμε ένα type που να παίρνει παραμέτρους όπως μία συνάρτηση.
+
+```ts
+    interface Box {
+        contents: any;
+    }
+
+    interface NumberBox {
+        contents: number;
+    }
+    
+    interface StringBox {
+        contents: string;
+    }
+    
+    interface BooleanBox {
+        contents: boolean;
+    }
+
+    function setContents(box: StringBox, newContents: string): void;
+    function setContents(box: NumberBox, newContents: number): void;
+    function setContents(box: BooleanBox, newContents: boolean): void;
+    function setContents(box: { contents: any }, newContents: any) {
+        box.contents = newContents;
+    }
+```
+Αντί για όλα τα παραπάνω μπορούμε να έχουμε:
+
+```ts
+    interface Box<Type> {
+        contents: Type;
+    }
+
+    function setContents<Type>(box: Box<Type>, newContents: Type) {
+        box.contents = newContents;
+    }
+```
+
+Και να το χρησιμοποιούμε έτσι:
+
+```ts
+    let boxA: Box<string> = { contents: "hello" };
+
+    setContents(boxA, 'Hi');
+
+    console.log(boxA.contents);
+```
+
 ## Classes
 
 Με την TypeScript μπορούμε να δουλέψουμε με Classes όπως σε μία πλήρως object oriented γλώσσα. 
