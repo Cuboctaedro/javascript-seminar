@@ -300,7 +300,7 @@ This is my first website. I made it using *node.js*, *markdown* and *yaml*.
     }).listen(8080); //the server object listens on port 8080
 ```
 
-Οι παράμετροι `req` και `response` είναι αντίστοιχα το request object που δέχεται ο server και το response object που θα δώσει.
+Οι παράμετροι `request` και `response` είναι αντίστοιχα το request object που δέχεται ο server και το response object που θα δώσει.
 
 Μπορούμε λοιπόν να διαβάσουμε στοιχεία από το request και να τα χρησιμοποιήσουμε στην απάντηση μας:
 
@@ -317,3 +317,94 @@ This is my first website. I made it using *node.js*, *markdown* and *yaml*.
         console.log('Listening on http://localhost:8080/')
     }).listen(8080);
 ```
+
+## Express
+
+Στην πράξη σπάνια θα χρησιμοποιήσουμε άμεσα τον server της Node. Συνήθως δουλεύουμε με κάποιο module που θα μας δώσει έτοιμες τις βασικές λειτουργίες ενός server. Απόλυτος κυρίαρχος σε αυτό τον τομέα είναι το Express καθώς και οι περισσότερες άλλες λύσεις βασίζονται σε αυτό. Το Express είναι ένα unopininated framework, δηλαδή δεν επιβάλλει κάποια άποψη στο πως να οργανώσετε τον κώδιλα σας.
+
+Μία βασική εφαρμογή με το Express είναι κάπως έτσι:
+
+```js
+    const express = require('express');
+    const app = express();
+    const port = 3000;
+
+    app.get('/', (request, response) => {
+        response.send('Hello World!');
+    });
+
+    app.listen(port, () => {
+        console.log(`Example app listening on port ${port}`);
+    });
+```
+
+### Routes
+
+Όπως βλέπουμε και εδώ έχουμε μια συνάρτηση που δέχεται τα `request` και `response` σαν παραμέτρους. Πάνω στο object `app` όμως που μας δίνει το Express μπορούμε να τρέξουμε τις μεθόδους `get` και `post` για κάθε ένα url της εφαρμογής μας για τα ανάλογα requests. Ετσι μπορούμε να οργανώσουμε τα routes της εφαρμογής μας.
+
+```js
+    app.get('/', (req, res) => {
+        res.send('homepage');
+    });
+    app.get('/about', (req, res) => {
+        res.send('about');
+    });
+    app.get('/ab?cd', (req, res) => {
+        res.send('page abcd or page acd');
+    });
+    app.post('/contact', (req, res) => {
+        res.send('you have sent data with our contact form');
+    });
+```
+
+Μπορούμε να ορίσουμε και routes με παραμέτρους.
+
+```js
+    app.get('/users/:userId/books/:bookId', (req, res) => {
+        res.send(`you are seeing book ${req.params.bookId} from user ${req.params.userId}`);
+    });
+```
+
+Μπορούμε να δημιουργήσουμε γκρουπ από routes
+
+```js
+    app.route('/book')
+        .get((req, res) => {
+            res.send('Get a random book');
+        });
+        .post((req, res) => {
+            res.send('Add a book');
+        });
+        .put((req, res) => {
+            res.send('Update the book');
+        });
+```
+
+### Middleware
+
+Για κάθε route μπορούμε να έχουμε περισσότερες από μία συναρτήσεις που το χειρίζονται. Η κάθε μία συνάρτηση παίρνει σαν παραμέτρους τα `request` και `response`, κάνει κάτι με αυτά και στη συνέχεια τα περνάει σαν παραμέτρους στην επόμενη συνάρτηση μέχρι τελικά αυτήν που θα δώσει το τελικό response. Αυτές οι συναρτήσεις λέγονται (όχι μόνο στο Express, σε κάθε backend application) middleware.
+
+Ειδικά στο Express τα middleware είναι ο βασικός τρόπος οργάνωσης της εφαρμογής. Ενα middleware function μπορεί:
+
+* Να επικοινωνήσει με μία βάση δεδομένων
+* Να σώσει σε log όποια στοιχεία θέλουμε
+* Να ξεκινήσει άλλες ενέργειες της εφαρμογής, όπως αποστολή email, κλπ
+* Να αλλάξει τα request και response objects που θα δώσει στο επόμενο middleware, προσθέτοντας ή αφαιρόντας στοιχέια
+* Τέλος, να καλέσει το επόμενο middleware ή
+* Να κλείσει τον κύκλο στέλνοντας το τελικό response
+
+Μπορούμε μα ορίσουμε middleware για όλη την εφαρμογή ή για συγκεκριμένα routes που θα συγκεντρώσουμε σε ένα roouter object ή ακόμα και για κάθε route ξεχωριστά.
+
+Εκτός από τα middleware που θα γράψουμε εμείς μπορούμε να χρησιμοποιήσουμε και έτοιμα modules από το npm. Μερικά από τα πιο συνηθισμένα είναι εδώ: https://expressjs.com/en/resources/middleware.html
+
+## Πέρα από το Express
+
+Η βασική λογική του Express που βασίζεται στα routes και middleware μπορεί στην πραγματικότητα να καλύψει κάθε τύπο backend εφαρμογής. Ομως απαιτεί από εμάς να γράψουμε πολύ κώδικα και να διαλέξουμε και μια σειρά από modules που θα κάνουν τις βασικές εργασίες, όπως επικοινωνία με database, authentication, error handling, input validation και η δημιουργία του τελικού response είτε αυτό είναι html είτε κάποιο json.
+
+Τελικά μέσα στο "οικοσύστημα" της Node κάποια modules συνήθως κυριαρχούν και γίνονται η κοινά αποδεκτή λύση. Για παράδειγμα το passport είναι η πιο συνηθισμένη λύση στο θέμα του authentication.
+
+Μία άλλη λύση είναι η χρήση ενός πιο πλήρους framework που περιλαμβάνει λύσεις για αυτές τις λειτουργίες. Τρία frameworks βασισμένα στο Express είναι αυτά:
+
+* [Loop Back](https://loopback.io/)
+* [Sails.js](https://sailsjs.com/)
+* [Nest.js](https://nestjs.com/)
