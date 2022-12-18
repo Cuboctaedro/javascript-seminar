@@ -67,8 +67,8 @@ https://nodejs.dev/en/api/v19/documentation/
     './user2.js'
     './userdata/data.js'
     '../posts/post1.js'
-    '../../project/functions/func1.js'
-    '../../project/file.js'
+    '../../functions/func1.js'
+    '../../file.js'
 ```
 Πως παίρνουμε πληροφορίες για ένα path σαν object
 
@@ -168,32 +168,32 @@ https://nodejs.dev/en/api/v19/documentation/
 Το Markdown είναι ένας τρόπος να γράφουμε κείμενο και με κάποια σύμβολα να χαρακτηρίζουμε κομμάτια του έτσι ώστε μετά να μπορούν να "μεταφραστούν" σε κανονικό html. Όλες αυτές οι σημειώσεις, καθώς και όλα τα αρχεία readme στο GitHub είναι γραμμένα με αυτό τον τρόπο. Οι βασικές αρχές είναι οι παρακάτω:
 
 ```md
-    # Τίτλος h1
-    ## Τίτλος h2
-    ### Τίτλος h3
-    #### Τίτλος h4
-    ##### Τίτλος h5
-    ###### Τίτλος h6
+# Τίτλος h1
+## Τίτλος h2
+### Τίτλος h3
+#### Τίτλος h4
+##### Τίτλος h5
+###### Τίτλος h6
 
-    Ανάμεσα στις παραγράφους αφήνουμε μία κενή σειρά.
+Ανάμεσα στις παραγράφους αφήνουμε μία κενή σειρά.
 
-    Όπως εδώ. Για να έχουμε *em tag, δηλαδή italics* και για να έχουμε *strong tag, δηλαδή bold*. Και μπορούμε να έχουμε ***και τα δύο***.
-    
-    1. Έτσι μπορούμε να
-    2. έχουμε μια
-    3. Ordered list (ol)
+Όπως εδώ. Για να έχουμε *em tag, δηλαδή italics* και για να έχουμε *strong tag, δηλαδή bold*. Και μπορούμε να έχουμε ***και τα δύο***.
 
-    * Και έτσι
-    * μπορούμε να έχουμε
-    * μία unordered list (ul)
+1. Έτσι μπορούμε να
+2. έχουμε μια
+3. Ordered list (ol)
 
-    Αν θέλουμε μαρκάρουμε μία λέξη σαν `code`.
+* Και έτσι
+* μπορούμε να έχουμε
+* μία unordered list (ul)
 
-    Μπορούμε να έχουμε rules
+Αν θέλουμε μαρκάρουμε μία λέξη σαν `code`.
 
-    ---
+Μπορούμε να έχουμε rules
 
-    Και να έχουμε και [Links](http://example.com)
+---
+
+Και να έχουμε και [Links](http://example.com)
 
 ```
 
@@ -206,41 +206,22 @@ https://nodejs.dev/en/api/v19/documentation/
 Το YAML είναι μία μορφή σειριοποίησης δεδομένων παρόμοια με το JSON αλλά είναι πολύ πιο εύκολο να γραφτεί.
 
 ```json
-    {
-        "title": "My first website",
-        "date": "2022-12-11T10:44:14.931Z",
-        "author": {
-            "name": "John Smith",
-            "email": "smith@example.com"
-        },
-        "tags": [
-            "web development",
-            "javascript"
-        ],
-        "id": 001
-    }
+{
+    "title": "My first website",
+    "date": "2022-12-11T10:44:14.931Z",
+    "author": {
+        "name": "John Smith",
+        "email": "smith@example.com"
+    },
+    "tags": [
+        "web development",
+        "javascript"
+    ],
+    "id": 001
+}
 ```
 
 ```yaml
-    title: "My first website"
-    date: "2022-12-11T10:44:14.931Z"
-    author:
-        name: "John Smith"
-        email: "smith@example.com"
-    tags:
-      - "web development"
-      - "javascript"
-    id: 001
-```
-
-Η Node μπορεί να μετατρέψει ένα αρχείο YAML σε JavaScript object μέσω modules όπως το yaml.
-
-### Συνδυασμός markdown και yaml
-
-Μπορούμε να συνδυάσουμε τις δύο γλώσσες σε ένα αρχεί με τον παρακάτω τρόπο:
-
-```
----
 title: "My first website"
 date: "2022-12-11T10:44:14.931Z"
 author:
@@ -250,11 +231,30 @@ tags:
     - "web development"
     - "javascript"
 id: 001
----
+```
 
-# My first website
+Η Node μπορεί να μετατρέψει ένα αρχείο YAML σε JavaScript object μέσω modules όπως το yaml.
 
-This is my first website. I made it using *node.js*, *markdown* and *yaml*.
+### Συνδυασμός markdown και yaml
+
+Μπορούμε να συνδυάσουμε τις δύο γλώσσες σε ένα αρχεί με τον παρακάτω τρόπο:
+
+```md
+    ---
+    title: "My first website"
+    date: "2022-12-11T10:44:14.931Z"
+    author:
+        name: "John Smith"
+        email: "smith@example.com"
+    tags:
+        - "web development"
+        - "javascript"
+    id: 001
+    ---
+
+    # My first website
+
+    This is my first website. I made it using *node.js*, *markdown* and *yaml*.
 ```
 Μπορούμε να σώσουμε τα παραπάνω σε ένα αρχείο όπως `post-01.md` ή `post-01.yaml`. Το κομμάτι ανάμεσα στα `---` είναι yaml και ονομάζεται συνήθως  front matter και το υπόλοιπο είναι markdown και είναι το content. Υπάρχουν modules για τη Node που μας επιρέπουν να διαβάσουμε εύκολα τέτοια αρχεία όπως το gray-matter.
 
